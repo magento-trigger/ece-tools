@@ -78,7 +78,7 @@ class ComposerFile implements ValidatorInterface
             return $this->resultFactory->error('Can\'t read composer.json file: ' . $e->getMessage());
         }
 
-        if (!isset($autoloadPsr4['Zend\Mvc\Controller\\'])) {
+        if (!isset($autoloadPsr4['Zend\Mvc\Controller\\']) && !isset($autoloadPsr4['Laminas\Mvc\Controller\\'])) {
             return $this->resultFactory->error(
                 'Required configuration is missed in autoload section of composer.json file.',
                 'Add ("Zend\\\\Mvc\\\\Controller\\\\": "setup/src/Zend/Mvc/Controller/") to autoload -> psr-4 section' .
